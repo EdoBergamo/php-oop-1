@@ -3,27 +3,30 @@
 class Movie
 {
   public $title;
-  public $genre;
+  public $genres = [];
   public $releaseYear;
 
-  public function __construct($title, $genre, $releaseYear)
+  public function __construct($title, $genres, $releaseYear)
   {
     $this->title = $title;
-    $this->genre = $genre;
+    $this->genres = $genres;
     $this->releaseYear = $releaseYear;
   }
 
   public function displayMovieInfo()
   {
     echo "Title: " . $this->title . "<br>";
-    echo "Genre: " . $this->genre . "<br>";
+    echo "Genres: " . implode(', ', $this->genres) . "<br>";
     echo "Release Year: " . $this->releaseYear . "<br>";
-    echo "<br>";
+    echo "<br>"; 
   }
 }
 
-$movie1 = new Movie("The Shawshank Redemption", "Drama", 1994);
-$movie2 = new Movie("The Godfather", "Crime", 1972);
+$genresMovie1 = ["Drama", "Crime"];
+$genresMovie2 = ["Action", "Adventure"];
+
+$movie1 = new Movie("The Shawshank Redemption", $genresMovie1, 1994);
+$movie2 = new Movie("Inception", $genresMovie2, 2010);
 
 echo "<h2>Movie 1:</h2>";
 $movie1->displayMovieInfo();
